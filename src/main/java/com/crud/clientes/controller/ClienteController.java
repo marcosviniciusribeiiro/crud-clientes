@@ -20,18 +20,18 @@ public class ClienteController {
 		this.service = service;
 	}
 	
-	@GetMapping("/cadastrar_cliente")
+	@GetMapping("/cadastrar")
 	public String formulario(Model model) {
 		model.addAttribute("clienteDTO", new ClienteDTO());
 		return "index";
 	}
 	
-	@PostMapping("/cadastrar_cliente")
+	@PostMapping("/cadastrar")
 	public String salvarCliente(@ModelAttribute("clienteDTO") @Valid ClienteDTO clienteDTO, BindingResult result) {
 		if(result.hasErrors()) {
 			return "index";
 		}
 		service.salvarCliente(clienteDTO);
-		return "redirect:/cadastrar_cliente";
+		return "redirect:/cadastrar";
 	}
 }
