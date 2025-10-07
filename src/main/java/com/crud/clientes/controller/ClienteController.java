@@ -34,4 +34,10 @@ public class ClienteController {
 		service.salvarCliente(clienteDTO);
 		return "redirect:/cadastrar";
 	}
+	
+	@GetMapping("/clientes")
+	public String listarClientes(Model model) {
+		model.addAttribute("clientes", service.listarTodos());
+		return "clientes";
+	}
 }
