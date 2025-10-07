@@ -11,12 +11,12 @@
 			<div class="mb-3">
 				<input type="hidden" th:field="*{id}"/>
 				
-				<label for="nome" class="form-label"><h4>Nome:</h4></label>
+				<label for="nome" class="form-label">Nome:</label>
 				<input type="text" th:field="*{nome}" class="form-control"/>
 				<div class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">
 			</div>
 			<div>
-				<label for="username" class="form-label"><h4>Username:</h4></label>
+				<label for="username" class="form-label">Username:</label>
 				<input type="text" th:field="*{username}" class="form-control"/>
 				<div class="text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">
 			</div>
