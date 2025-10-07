@@ -7,6 +7,25 @@
 	</head>
 	<body class="container mt-5">
 		<h2 class="container text-center">Cadastro de Cliente</h2>
-		
+		<form th:action="@{/cadastrar}" th:object="${clienteDTO}" method="post" class="mt-4">
+			<div class="mb-3">
+				<input type="hidden" th:field="*{id}"/>
+				
+				<label for="nome" class="form-label"><h4>Nome:</h4></label>
+				<input type="text" th:field="*{nome}" class="form-control"/>
+				<div class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">
+			</div>
+			<div>
+				<label for="username" class="form-label"><h4>Username:</h4></label>
+				<input type="text" th:field="*{username}" class="form-control"/>
+				<div class="text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">
+			</div>
+			
+			<div class="container text-center">
+				<div class="row">
+					<div class="col-12"><button type="submit" class="btn btn-success">Cadastrar</button></div>
+				</div>
+			</div>
+		</form>
 	</body>
 </html>
