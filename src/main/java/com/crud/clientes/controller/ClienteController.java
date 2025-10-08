@@ -23,6 +23,12 @@ public class ClienteController {
 		this.service = service;
 	}
 	
+	@GetMapping("/clientes")
+	public String listarClientes(Model model) {
+		model.addAttribute("clientes", service.listarTodos());
+		return "clientes";
+	}
+	
 	@GetMapping("/cadastrar")
 	public String formulario(Model model) {
 		model.addAttribute("clienteDTO", new ClienteDTO());
@@ -37,11 +43,12 @@ public class ClienteController {
 		service.salvarCliente(clienteDTO);
 		return "redirect:/cadastrar";
 	}
-	
-	@GetMapping("/clientes")
-	public String listarClientes(Model model) {
-		model.addAttribute("clientes", service.listarTodos());
-		return "clientes";
+		
+	@PutMapping("/clientes/atualizar/{id}")
+	public String atualizarCliente(@PathVariable Long id, @ModelAttribute ClienteDTO cliente) {
+		cliente.setId(id);
+		service.salvarCliente(cliente);
+		return "redirect:/clientes";
 	}
 	
 	@GetMapping("/clientes/editar/{id}")
@@ -49,13 +56,6 @@ public class ClienteController {
 		ClienteDTO dto = service.buscarPorId(id);
 		model.addAttribute("clienteDTO", dto);
 		return "index";
-	}
-	
-	@PutMapping("/clientes/atualizar/{id}")
-	public String atualizarCliente(@PathVariable Long id, @ModelAttribute ClienteDTO cliente) {
-		cliente.setId(id);
-		service.salvarCliente(cliente);
-		return "redirect:/clientes";
 	}
 	
 	@DeleteMapping("/clientes/excluir/{id}")
