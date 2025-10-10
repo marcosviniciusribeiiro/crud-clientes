@@ -20,11 +20,8 @@ public class Endereco {
 	@Column(nullable = false, length = 50)
 	private String estado;
 	
-	@Column(nullable = false, length = 75)
+	@Column(nullable = false, length = 50)
 	private String cidade;
-	
-	@Column(length = 35)
-	private String bairro;
 	
 	public Long getId(){
 		return id;
@@ -52,12 +49,5 @@ public class Endereco {
 	}
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
-	}
-	
-	public String getBairro() {
-		return bairro;
-	}
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
 	}
 }
