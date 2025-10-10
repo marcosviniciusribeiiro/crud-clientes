@@ -1,5 +1,7 @@
 package com.crud.clientes.dto;
 
+import com.crud.clientes.model.Cliente;
+
 import jakarta.validation.constraints.NotBlank;
 
 public class EnderecoDTO {
@@ -13,6 +15,8 @@ public class EnderecoDTO {
 
 	@NotBlank(message = "A cidade é obrigatória")
 	private String cidade;
+	
+	private Cliente cliente;
 	
 	public Long getId() {
 		return id;
@@ -40,5 +44,11 @@ public class EnderecoDTO {
 	}
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
+	}
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 }
