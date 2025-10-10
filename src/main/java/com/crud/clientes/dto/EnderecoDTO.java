@@ -6,7 +6,7 @@ public class EnderecoDTO {
 	private Long id;
 
 	@NotBlank(message = "O CEP é obrigatório")
-	private int cep; 
+	private String cep; 
 
 	@NotBlank(message = "O estado é obrigatório")
 	private String estado;
@@ -14,6 +14,7 @@ public class EnderecoDTO {
 	@NotBlank(message = "A cidade é obrigatória")
 	private String cidade;
 
+	@NotBlank(message = "O bairro é obrigatório")
 	private String bairro;
 	
 	public Long getId() {
@@ -23,10 +24,10 @@ public class EnderecoDTO {
 		this.id = id;
 	}
 	
-	public int getCep() {
+	public String getCep() {
 		return cep;
 	}
-	public void setCep(int cep) {
+	public void setCep(String cep) {
 		this.cep = cep;
 	}
 	
