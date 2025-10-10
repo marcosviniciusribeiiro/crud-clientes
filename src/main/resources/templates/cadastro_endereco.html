@@ -1,0 +1,40 @@
+<DOCTYPE html>
+<html xmlsn:th="https://www.thymeleaf.org" lang="pt-br">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Cadastro de Endereço</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+	</head>
+	<body class="container mt-5">
+		<h2>Cadastro de Endereço</h2>
+		<form th:action="@{/cadastrar/endereco}" th:object="${enderecoDTO}" method="post" class="mt-4">
+			<div class="mb-3">
+				<input type="hidden" th:field="*{id}"/>
+				
+				<label for="cep" class="form-label">CEP:</label>
+				<input type="text" th:field="*{cep}" class="form-control"/>
+				<div class="text-danger" th:if="${#fields.hasErrors('cep')}" th:errors="*{cep}">Erro</div>				
+			</div>
+			<div class="mb-3">
+				<label for="estado" class="form-label">Estado:</label>
+				<input type="text" th:field="*{estado}" class="form-control"/>
+				<div class="text-danger" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}">Erro</div> 
+			</div>
+			<div class="mb-3">
+				<label for="cidade" class="form-label">Cidade:</label>
+				<input type="text" th:field="*{cidade}" class="form-control"/>
+				<div class="text-danger" th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}">Erro</div>
+			</div>
+			<div class="mb-3">
+				<label for="bairro" class="form-label">Bairro:</label>
+				<textarea th:field="*{bairro}" class="form-control"></textarea>
+				<div class="text-danger" th:if="${#fields.hasErrors('bairro')}" th:errors="*{bairro}">Erro</div>
+			</div>
+			<div class="container text-center">
+				<div class="row">
+					<div class="col-6"><button type="submit" class="btn btn-success">Cadastrar</button></div>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>
