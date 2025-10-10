@@ -11,27 +11,27 @@ import com.crud.clientes.repository.ClienteRepository;
 
 @Service
 public class ClienteService {
-	public ClienteRepository repository;
+	public ClienteRepository clienteRepository;
 	
-	public ClienteService(ClienteRepository repository) {
-		this.repository = repository;
+	public ClienteService(ClienteRepository clienteRepository) {
+		this.clienteRepository = clienteRepository;
 	}
 	
 	public void salvarCliente(ClienteDTO dto) {
-		repository.save(ClienteMapper.toEntity(dto));
+		clienteRepository.save(ClienteMapper.toEntity(dto));
 	}
 	
-	public List<ClienteDTO> listarTodos(){
-		return repository.findAll()
+	public List<ClienteDTO> listarClientes(){
+		return clienteRepository.findAll()
 						 .stream()
 						 .map(ClienteMapper::toDTO)
 						 .toList();
 	}
 	public ClienteDTO buscarPorId(Long id) {
-		Cliente c = repository.findById(id).orElseThrow(() -> new IllegalArgumentException("ID não encontrado: " + id));
+		Cliente c = clienteRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("ID não encontrado: " + id));
 		return ClienteMapper.toDTO(c);
 	}
 	public void excluirCliente(Long id) {
-		repository.deleteById(id);
+		clienteRepository.deleteById(id);
 	}
 }
