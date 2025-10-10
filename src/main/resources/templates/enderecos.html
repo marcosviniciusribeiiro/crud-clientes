@@ -10,7 +10,7 @@
 		<table class="table table-bordered table-striped mt-3">
 			<thead>
 				<tr>
-					<th>ID</th><th>CEP</th><th>Estado</th><th>Cidade</th><th>Atualizar</th>
+					<th>ID</th><th>CEP</th><th>Estado</th><th>Cidade</th><th>Atualizar</th><th>Apagar</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -21,7 +21,10 @@
 					<td th:text="${endereco.cidade}"></td>
 					<td>
 						<a th:href="@{/enderecos/editar/{id} (id=${endereco.id})}" class="btn btn-warning sm-4">Editar</a>
-					</td>			
+					</td>
+					<td>
+						
+					</td>		
 				</tr>
 			<tbody>
 		</table>
