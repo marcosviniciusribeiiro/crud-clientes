@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 import com.crud.clientes.dto.EnderecoDTO;
+import com.crud.clientes.repository.ClienteRepository;
 import com.crud.clientes.service.EnderecoService;
 
 import jakarta.validation.Valid;
@@ -18,14 +19,17 @@ import jakarta.validation.Valid;
 @Controller
 public class EnderecoController {
 	public EnderecoService service;
+	public ClienteRepository clienteRepository;
 	
-	public EnderecoController(EnderecoService service) {
+	public EnderecoController(EnderecoService service, ClienteRepository clienteRepository) {
 		this.service = service;
+		this.clienteRepository = clienteRepository;
 	}
 	
 	@GetMapping("/cadastrar/endereco")
 	public String formulario(Model model) {
 		model.addAttribute("enderecoDTO", new EnderecoDTO());
+		model.addAttribute("clientes", clienteRepository.findAll());
 		return "cadastro_endereco";
 	}
 	
@@ -48,6 +52,7 @@ public class EnderecoController {
 	public String editarEndereco(@PathVariable Long id, Model model) {
 		EnderecoDTO dto = service.buscarPorId(id);
 		model.addAttribute("enderecoDTO", dto);
+		model.addAttribute("clientes", clienteRepository.findAll());
 		return "cadastro_endereco";
 	}
 	
