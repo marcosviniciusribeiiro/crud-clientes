@@ -10,6 +10,7 @@ public class EnderecoMapper {
 		e.setCep(dto.getCep());
 		e.setEstado(dto.getEstado());
 		e.setCidade(dto.getCidade());
+		e.setCliente(dto.getCliente());
 		return e;
 	}
 	
@@ -19,6 +20,7 @@ public class EnderecoMapper {
 		dto.setCep(e.getCep());
 		dto.setEstado(e.getEstado());
 		dto.setCidade(e.getCidade());
+		dto.setCliente(e.getCliente());
 		return dto;
 	}
 }
