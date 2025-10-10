@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.crud.clientes.dto.EnderecoDTO;
@@ -39,6 +40,13 @@ public class EnderecoController {
 	public String listarEnderecos(Model model) {
 		model.addAttribute("enderecos", service.listarEnderecos());
 		return "enderecos";
+	}
+	
+	@GetMapping("/enderecos/editar/{id}")
+	public String editarEndereco(@PathVariable Long id, Model model) {
+		EnderecoDTO dto = service.buscarPorId(id);
+		model.addAttribute("enderecoDTO", dto);
+		return "cadastro_endereco";
 	}
 	//Editar cadastro: ("/enderecos/editar/{id}")
 	//Atualizar cadastro: ("/enderecos/atualizar/{id}")
