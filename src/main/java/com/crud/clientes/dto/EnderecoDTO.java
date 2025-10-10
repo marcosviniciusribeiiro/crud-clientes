@@ -13,9 +13,6 @@ public class EnderecoDTO {
 
 	@NotBlank(message = "A cidade é obrigatória")
 	private String cidade;
-
-	@NotBlank(message = "O bairro é obrigatório")
-	private String bairro;
 	
 	public Long getId() {
 		return id;
@@ -43,12 +40,5 @@ public class EnderecoDTO {
 	}
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
-	}
-	
-	public String getBairro() {
-		return bairro;
-	}
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
 	}
 }
