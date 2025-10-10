@@ -25,30 +25,23 @@ public class ClienteController {
 	
 	@GetMapping("/clientes")
 	public String listarClientes(Model model) {
-		model.addAttribute("clientes", service.listarTodos());
+		model.addAttribute("clientes", service.listarClientes());
 		return "clientes";
 	}
 	
-	@GetMapping("/cadastrar")
+	@GetMapping("/cadastrar/cliente")
 	public String formulario(Model model) {
 		model.addAttribute("clienteDTO", new ClienteDTO());
 		return "index";
 	}
 	
-	@PostMapping("/cadastrar")
+	@PostMapping("/cadastrar/cliente")
 	public String salvarCliente(@ModelAttribute("clienteDTO") @Valid ClienteDTO clienteDTO, BindingResult result) {
 		if(result.hasErrors()) {
 			return "index";
 		}
 		service.salvarCliente(clienteDTO);
-		return "redirect:/cadastrar";
-	}
-		
-	@PutMapping("/clientes/atualizar/{id}")
-	public String atualizarCliente(@PathVariable Long id, @ModelAttribute ClienteDTO cliente) {
-		cliente.setId(id);
-		service.salvarCliente(cliente);
-		return "redirect:/clientes";
+		return "redirect:/cadastrar/cliente";
 	}
 	
 	@GetMapping("/clientes/editar/{id}")
@@ -56,6 +49,13 @@ public class ClienteController {
 		ClienteDTO dto = service.buscarPorId(id);
 		model.addAttribute("clienteDTO", dto);
 		return "index";
+	}
+	
+	@PutMapping("/clientes/atualizar/{id}")
+	public String atualizarCliente(@PathVariable Long id, @ModelAttribute ClienteDTO cliente) {
+		cliente.setId(id);
+		service.salvarCliente(cliente);
+		return "redirect:/clientes";
 	}
 	
 	@DeleteMapping("/clientes/excluir/{id}")
