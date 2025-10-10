@@ -48,7 +48,6 @@ public class EnderecoController {
 		model.addAttribute("enderecoDTO", dto);
 		return "cadastro_endereco";
 	}
-	//Editar cadastro: ("/enderecos/editar/{id}")
 	//Atualizar cadastro: ("/enderecos/atualizar/{id}")
 	//Deletar cadastro: ("enderecos/excluir/{id}")
 }
