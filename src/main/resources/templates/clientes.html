@@ -22,12 +22,13 @@
 						<a th:href="@{/clientes/editar/{id} (id=${cliente.id})}" class="btn btn-warning sm-4">Editar</a>
 					</td>
 					<td>
-						<form th:action="@{/clientes/excluir/{id}(id=${cliente.id})}" method="post" style="display-inline">
+						<form th:action="@{/clientes/excluir/{id}(id=${cliente.id})}" method="post">
 							<input type="hidden" name="_method" value="delete"/>
 							<button type="submit" class="btn btn-danger sm-4" onclick="return confirm('Você deseja apagar os dados deste cliente?')">
 								Excluir
 							</button>
 						</form>
+					</td>
 				</tr>
 			</tbody>
 		</table>
