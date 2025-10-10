@@ -23,7 +23,10 @@
 						<a th:href="@{/enderecos/editar/{id} (id=${endereco.id})}" class="btn btn-warning sm-4">Editar</a>
 					</td>
 					<td>
-						
+						<form th:action="@{/enderecos/excluir/{id} (id=${endereco.id})}" method="post">
+							<input type="hidden" name="_method" value="delete"/>
+							<button type="submit" class="btn btn-danger sm-4" onclick="return confirm('Você deseja apagar este endereço?')">Excluir</button>
+						</form>
 					</td>		
 				</tr>
 			<tbody>
